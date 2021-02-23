@@ -1,0 +1,61 @@
+<?php
+$title = "Danh Sách Thành Phố";
+$this->headTitle($title);
+
+?>
+<div class="container-fluid">
+    <div class="row page-title-div">
+        <div class="col-md-6">
+            <h2 class="title"><?= $title ?></h2>
+            <p class="sub-title"><?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?></p>
+        </div>
+        <!-- /.col-md-6 -->
+        <div class="col-md-6 right-side">
+            <a class="btn btn-primary" role="button" href="<?= $this->url('thanhpho', ['action' => 'add']) ?>">Thêm thành phố</a>
+        </div>
+        <!-- /.col-md-6 text-right -->
+    </div>
+</div>
+
+<section class="section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-2">
+                <table class="table table-striped table-bordered" id="example">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Thành Phố</th>
+                            <th>File hình ảnh</th>
+
+                            <th>option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $stt = 1;
+                        foreach ($thanhphos as $key ) :
+                        ?>
+                            <tr>
+                                <td><?= $stt ?></td>
+                                <td><?= $this->escapeHtml($key->getTenTP()) ?></td>
+                                <td><img src="/../zendne5/images/thanhpho/<?= ($key->geturlHinh()) ?>" width="80px" height="80px">
+                                <td>
+                                    <a  href="<?= $this->url('thanhpho', ['action' => 'edit', 'id' => $this->escapeHtml($key->getId())]) ?>">
+                                    <button type="button" class="btn btn-primary" >   Edit </a> |
+                                    <a href="<?= $this->url('thanhpho', ['action' => 'delete', 'id' => $this->escapeHtml($key->getId())]) ?>">
+                                    <button class="btn btn-danger">   Delete </a>
+                                </td>
+                            </tr>
+                        <?php
+                            $stt++;
+                        endforeach;
+
+
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,64 @@
+<?php 
+$title= "Danh Sách Khách hàng";
+$this -> headTitle($title);
+
+?>
+
+
+<div class="container-fluid">
+    <div class="row page-title-div">
+        <div class="col-md-6">
+            <h2 class="title"><?=$title?></h2>
+            <p class="sub-title"><?= $this->flashMessenger()->render('success', ['alert', 'alert-success']);?></p>
+        </div>
+     </div>
+ </div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Username</th>
+                <!-- <th>Ho ten</th> -->
+                <th>Email</th>
+                <!-- <th>NgaySinh</th>
+                <th>Dien thoai KH</th>
+                <th>DiaChi</th>
+                <th>Password</th> -->
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <?php 
+            $stt=1;
+            foreach($khachhangs as $khachhang):?>
+            <tr>
+                <td><?=$stt?></td>
+                <td><?=$this->escapeHtml($khachhang->getUsername())?></td>
+                <!-- <td><?=$this->escapeHtml($khachhang->getTenKhachHang())?></td> -->
+                <td><?=$this->escapeHtml($khachhang->getEmail())?></td>
+                <!-- <td><?=$this->escapeHtml($khachhang->getNgaySinh())?></td>
+                <td><?=$this->escapeHtml($khachhang->getDienthoaiKH())?></td>
+                <td><?=$this->escapeHtml($khachhang->getDiaChi())?></td>
+                <td><?=$this->escapeHtml($khachhang->getPassword())?></td> -->
+                
+
+                <td> 
+                    <a href="<?=$this->url('khachhang',['action'=>'delete','id'=>$this->escapeHtml($khachhang->getIdKhachHang())])?>"> 
+                    <button class="btn btn-danger">Delete </a>
+
+                </td>
+            </tr>
+            <?php
+            $stt++;
+            endforeach?>
+        </tbody>
+    </table>
+    </div>
+    </div>
+</div>
+

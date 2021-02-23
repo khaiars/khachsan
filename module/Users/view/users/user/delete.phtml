@@ -1,0 +1,15 @@
+<?php
+$title = "Delete user";
+$this->headTitle($title);
+?>
+<section class="section">
+    <div class="container-fluid">
+<h2>Ban co chac chan muon xoa user<b> <?=$user->getUsername()  ?> </b>
+<br> Email: <?= $user->getEmail()?> khong?
+</h2>
+<form method="POST" action="">
+    <input type="submit" name="delete" value="No" class="btn btn-default">
+    <input type="submit" name="delete" value="Yes" class="btn btn-success">
+</form>
+    </div>
+</section>

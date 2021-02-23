@@ -1,0 +1,15 @@
+<?php
+$title = "Delete Thành Phố";
+$this->headTitle($title);
+?>
+<section class="section">
+    <div class="container-fluid">
+<h2>Bạn có chắc chắn muốn xoá thành phố<b> <?=$tp->getTenTP()?> </b> không ? </b>
+</h2>
+<form method="POST" action="">
+    <input type="submit" name="delete" value="No" class="btn btn-default">
+    <input type="submit" name="delete" value="Yes" class="btn btn-success">
+</form>
+    </div>
+</section>
+

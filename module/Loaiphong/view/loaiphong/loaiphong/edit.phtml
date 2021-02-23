@@ -1,0 +1,74 @@
+
+<?php
+$title = "Sửa Loại Phòng";
+$this->headTitle($title);
+$form = $this->get('form');
+$tenlp = $form->get('tenlp');
+$gia = $form->get('gia');
+
+$urlhinh=$form->get('urlhinh');
+$btnSubmit = $form->get('btnSubmit');
+$tenks= $form->get('tenks');
+$tenks->setAttributes([
+    'readonly'=>true
+]);
+
+$form->prepare();
+?>
+<?= $this->form()->openTag($form)?>
+<div class="form-row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3> <?= $title ?></h3>
+    
+        
+        
+        <div class="form-group">
+            <?= $this->formLabel($tenlp); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formText($tenlp)  ;
+                echo $this->formElementErrors($tenlp);
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($gia); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formText($gia);  
+                echo $this->formElementErrors($gia);
+                ?>
+             </div>
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($tenks); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formSelect($tenks);  
+                echo $this->formElementErrors($tenks);
+                ?>
+             </div>
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($urlhinh); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formFile($urlhinh);  
+                echo $this->formElementErrors($urlhinh);
+                ?>
+             </div>
+        </div>
+       
+        
+        <!-- /.box-body -->
+        <div class="form-row">
+            <div class="col-md-2 col-md-offset-10">
+            <?= $this->formSubmit($btnSubmit); ?>
+            </div>      
+        </div>
+   
+    </div>
+</div>
+<?= $this->form()->closeTag($form) ?>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quản lý khách sạn</title>
+
+    <!-- ========== COMMON STYLES ========== -->
+    <link rel="shortcut icon" type="image/ico" href="<?= $this->basePath('/images/favicon.ico') ?>">
+    <link rel="stylesheet" href="<?= $this->basePath('css/bootstrap.css') ?>" media="screen">
+    <link rel="stylesheet" href="<?= $this->basePath('css/font-awesome.min.css') ?>" media="screen">
+    <link rel="stylesheet" href="<?= $this->basePath('css/animate-css/animate.min.css') ?>" media="screen">
+    <link rel="stylesheet" href="<?= $this->basePath('css/lobipanel/lobipanel.min.css') ?>" media="screen">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <!-- ========== PAGE STYLES ========== -->
+    <link rel="stylesheet" href="<?= $this->basePath('css/prism/prism.css') ?>" media="screen"> <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
+
+    <!-- ========== THEME CSS ========== -->
+    <link rel="stylesheet" href="<?= $this->basePath('css/main.css') ?>" media="screen">
+
+    <!-- ========== MODERNIZR ========== -->
+    <script src="<?= $this->basePath('js/modernizr/modernizr.min.js') ?>"></script>
+
+</head>
+
+<body class="top-navbar-fixed">
+    <div class="main-wrapper">
+        <!-- ========== TOP NAVBAR ========== -->
+        <!-- ========== TOP NAVBAR ========== -->
+        <nav class="navbar top-navbar bg-white box-shadow">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header no-padding">
+                        <a class="navbar-brand">
+                            Lựa chọn
+                        </a>
+                        <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+                        <button type="button" class="navbar-toggle mobile-nav-toggle">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <!-- /.navbar-header -->
+                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                        <ul class="nav navbar-nav" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <li class="hidden-sm hidden-xs"><a href="#" class="full-screen-handle"><i class="fa fa-arrows-alt"></i></a></li>
+                            <li class="hidden-xs hidden-xs">
+                                <!-- <a href="#">My Tasks</a> -->
+                            </li>
+                        </ul>
+                        <!-- /.nav navbar-nav -->
+                        <ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle bg-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus-circle"></i> Add New <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="<?= $this->basePath('/thanhpho/add') ?>"><i class="fa fa-plus-square-o"></i> Thành Phố</a></li>
+                                    <li><a href="<?= $this->basePath('/khachsan/add') ?>"><i class="fa fa-plus-square-o"></i> Khách Sạn</a></li>
+                                    <li><a href="<?= $this->basePath('/lp/add') ?>"><i class="fa fa-plus-square-o"></i> Loại Phòng</a></li>
+                                    <li><a href="<?= $this->basePath('/user/add') ?>"><i class="fa fa-plus-square-o"></i> User</a></li>
+                                </ul>
+                            </li>
+                            <!-- /.dropdown -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account
+                                    <span class="caret"></span>
+                                    <ul class="dropdown-menu profile-dropdown">
+                                        <li class="profile-menu bg-gray">
+                                            <div class="">
+                                                <div class="profile-name">
+                                                    <?php
+                                                    $session = new \Laminas\Session\Container("Zend_Auth");
+                                                    echo $value = $session->offsetGet('session');
+                                                    ?>
+                                </a>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                </li>
+
+                <li role="separator" class="divider"></li>
+                <li><a href="<?php echo $this->url('logout', ['action' => 'logout']) ?>" class="color-danger text-center"><i class="fa fa-sign-out"></i> Logout</a></li>
+                </ul>
+                </li>
+                <!-- /.dropdown -->
+                </ul>
+                <!-- /.nav navbar-nav navbar-right -->
+            </div>
+            <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    </nav>
+
+    <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+    <div class="content-wrapper">
+        <div class="content-container">
+            <!-- ========== LEFT SIDEBAR ========== -->
+            <div class="left-sidebar bg-black-300 box-shadow ">
+                <div class="sidebar-content">
+                    <div class="sidebar-nav">
+                        <ul class="side-nav color-gray">
+                            <li class="has-children">
+                                <a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-right arrow"></i></a>
+                            </li>
+                            <li class=""><a href="<?= $this->basePath('/thanhpho') ?>"><i class="fa fa-pencil"></i> <span>Thành phố</span></a></li>
+                            <li class=""><a href="<?= $this->basePath('/khachsan') ?>"><i class="fa fa-bullseye"></i> <span>Khách sạn</span></a></li>
+                            <li class=""><a href="<?= $this->basePath('/lp') ?>"><i class="fa fa-user-secret"></i> <span>Loại phòng</span></a></li>
+                            <li class=""><a href="<?= $this->basePath('/dangkydatphong') ?>"><i class="fa fa-info"></i> <span>Đăng ký đặt phòng</span></a></li>
+                            <li class=""><a href="<?= $this->basePath('/user') ?>"><i class="fa fa-info-circle"></i> <span>User</span></a></li>
+                            <li class=""><a href="<?= $this->basePath('/khachhang') ?>"><i class="fa fa-user"></i> <span>Khách hàng</span></a></li>
+                            
+                        </ul>
+                        <!-- /.side-nav -->
+
+                    </div>
+                    <!-- /.sidebar-nav -->
+                </div>
+                <!-- /.sidebar-content -->
+            </div>
+            <!-- /.left-sidebar -->
+
+            <div class="main-page">
+                <!-- /.container-fluid -->
+                <div class="row">
+                    <?= $this->content ?>
+                    <!-- /.col-md-12 -->
+                </div>
+                <!-- /.section -->
+
+            </div>
+            <!-- /.main-page -->
+        </div>
+        <!-- /.content-container -->
+    </div>
+    <!-- /.content-wrapper -->
+    </div>
+    <!-- /.main-wrapper -->
+
+    <!-- ========== COMMON JS FILES ========== -->
+    <script src="<?= $this->basePath('js/jquery/jquery-2.2.4.min.js') ?>"></script>
+    <script src="<?= $this->basePath('js/jquery-ui/jquery-ui.min.js') ?>"></script>
+    <script src="<?= $this->basePath('js/bootstrap/bootstrap.min.js') ?>"></script>
+    <script src="<?= $this->basePath('js/pace/pace.min.js') ?>"></script>
+    <script src="<?= $this->basePath('js/lobipanel/lobipanel.min.js') ?>"></script>
+    <script src="<?= $this->basePath('js/iscroll/iscroll.js') ?>"></script>
+    <script src="<?= $this->basePath('js/scriptfilter.js') ?>"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <!-- ========== PAGE JS FILES ========== -->
+    <script src="<?= $this->basePath('js/prism/prism.js') ?>"></script>
+    <!-- ========== THEME JS ========== -->
+    <script src="<?= $this->basePath('js/main.js') ?>"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#a').DataTable();
+        });
+    </script>
+    <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
+</body>
+
+</html>

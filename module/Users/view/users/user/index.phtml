@@ -1,0 +1,69 @@
+<?php
+$title = "Danh Sách User";
+$this->headTitle($title);
+
+
+?>
+<div class="container-fluid">
+    <div class="row page-title-div">
+        <div class="col-md-6">
+            <h2 class="title"><?= $title ?></h2>
+            <p class="sub-title"><?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?></p>
+        </div>
+        <!-- /.col-md-6 -->
+        <div class="col-md-6 right-side">
+            <a class="btn btn-primary" role="button" href="<?= $this->url('user', ['action' => 'add']) ?>" role="button">Thêm Users</a>
+        </div>
+        <!-- /.col-md-6 text-right -->
+    </div>
+</div>
+<section class="section">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="panel-body p-20">
+                <table class="table table-bordered" id="a">
+
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Fullname</th>
+                            <th>NgaySinh</th>
+                            <th>Phone</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $stt = 1;
+                        foreach ($users as $user) : ?>
+                            <tr>
+                                <td><?= $stt ?></td>
+                                <td><?= $this->escapeHtml($user->getUsername()) ?></td>
+                                <td><?= $this->escapeHtml($user->getEmail()) ?></td>
+                                <td><?= $this->escapeHtml($user->getHoten()) ?></td>
+                                <td><?= $this->escapeHtml($user->getNgaySinh()) ?></td>
+                                <td><?= $this->escapeHtml($user->getDienthoai()) ?></td>
+
+                                <td>
+
+                                    <a href="<?= $this->url('user', ['action' => 'edit', 'id' => $this->escapeHtml($user->getIdUser())]) ?>">
+                                    <button type="button" class="btn btn-primary" >    Edit </a> |
+                                    <a href="<?= $this->url('user', ['action' => 'delete', 'id' => $this->escapeHtml($user->getIdUser())]) ?>">
+                                    <button type="button" class="btn btn-danger" >   Delete </a>
+
+                                </td>
+                            </tr>
+                        <?php
+                            $stt++;
+                        endforeach ?>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</section>

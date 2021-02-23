@@ -1,0 +1,67 @@
+<?php 
+$title= "Danh Sách Loại Phòng";
+$this -> headTitle($title);
+
+?>
+<div class="container-fluid">
+    <div class="row page-title-div">
+        <div class="col-md-6">
+            <h2 class="title"><?=$title?></h2>
+            <p class="sub-title"><?= $this->flashMessenger()->render('success', ['alert', 'alert-success']);?></p>
+        </div>
+                <!-- /.col-md-6 -->
+        <div class="col-md-6 right-side">
+            <a class="btn btn-primary" role="button" href="<?=$this->url('lp',['action'=>'add'])?>" >Thêm loại phòng</a>
+         </div>
+                                <!-- /.col-md-6 text-right -->
+     </div>
+ </div>
+
+<section class="section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-2">
+                <table class="table table-striped table-bordered" id="example" >
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên loại phòng</th>
+                            <th>Giá</th>
+                            <th>Hình</th>
+                            <th>Tên khách sạn</th>
+                            <th>option</th>
+                        
+                        
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <?php 
+                        $stt=1;
+                        foreach($loaiphongs as $key =>$value):
+                           ?>
+                        <tr>
+                            <td><?=$stt?></td>  
+                            <td><?=$this->escapeHtml($value['TenLP'])?></td>
+                            <td><?=$this->escapeHtml($value['Gia'])?> VND/ 1 đêm</td>
+                            <td><img src="/../zendne5/images/loaiphong/<?= $value['urlHinh']?>" width="80px" height="80px"></td>
+                            <td><?=$this->escapeHtml($value['tenKS'])?></td>  
+                           
+                            <td> 
+                                <a href="<?=$this->url('lp',['action'=>'edit','id'=>$this->escapeHtml($value['MaLP'])])?>"> 
+                                <button class="btn btn-primary">Edit </a> | 
+                                <a href="<?=$this->url('lp',['action'=>'delete','id'=>$this->escapeHtml($value['MaLP'])])?>"> 
+                                <button class="btn btn-danger">Delete </a>
+                            </td>
+                        </tr>
+                        <?php
+                        $stt++;                                   
+                        endforeach;
+
+   
+                        ?>
+                    </tbody>
+</table>
+</div>
+    </div>
+</div>
+</section>

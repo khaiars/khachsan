@@ -1,0 +1,46 @@
+<?php
+$title = "Thêm Mới Thành Phố";
+$this->headTitle($title);
+$form = $this->get('form');
+$tentp = $form->get('tentp');
+$urlhinh = $form->get('urlhinh');
+
+$btnSubmit = $form->get('btnSubmit');
+
+
+$form->prepare();
+?>
+ <?= $this->form()->openTag($form)?>
+<div class="form-row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3> <?= $title ?></h3>
+ 
+        <div class="form-group">
+            <?= $this->formLabel($tentp); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formText($tentp)  ;
+                echo $this->formElementErrors($tentp);
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($urlhinh); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formFile($urlhinh);  
+                echo $this->formElementErrors($urlhinh);
+                ?>
+             </div>
+        </div>
+
+    <!-- /.box-body -->
+    <div class="form-row">
+        <div class="col-md-2 col-md-offset-10">
+        <?= $this->formSubmit($btnSubmit) ?>
+        </div>      
+    </div>
+   
+</div>
+</div>
+<?= $this->form()->closeTag($form) ?>

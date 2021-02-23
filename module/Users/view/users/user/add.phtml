@@ -1,0 +1,96 @@
+
+<?php
+$title = "Thêm Mới user";
+$this->headTitle($title);
+$form = $this->get('form');
+$username = $form->get('username');
+$hoten = $form->get('hoten');
+$password = $form->get('password');
+$email = $form->get('email');
+$confirm_password = $form->get('confirm_password');
+$hoten = $form->get('hoten');
+$ngaysinh = $form->get('ngaysinh');
+$btnSubmit = $form->get('btnSubmit');
+
+$form->prepare();
+?>
+ <?= $this->form()->openTag($form)?>
+<div class="form-row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3> <?= $title ?></h3>
+ 
+        <div class="form-group">
+            <?= $this->formLabel($username); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formText($username)  ;
+                echo $this->formElementErrors($username);
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($password); ?>
+
+            <div class="col-md-9">
+                <?php
+                echo $this->formPassword($password)  ;
+                echo $this->formElementErrors($password);
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($confirm_password); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formElement($confirm_password)  ;
+                echo $this->formElementErrors($confirm_password);
+                ?>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <?= $this->formLabel($hoten); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formText($hoten);  
+                echo $this->formElementErrors($hoten);
+                ?>
+             </div>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($email); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formEmail($email) ; 
+                echo $this->formElementErrors($email);
+                ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($ngaysinh); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formElement($ngaysinh)  ;
+                echo $this->formElementErrors($ngaysinh);
+                ?>
+            </div>
+        </div>
+       
+
+
+    
+    <!-- /.box-body -->
+    <div class="form-row">
+        <div class="col-md-2 col-md-offset-10">
+        <?= $this->formSubmit($btnSubmit); ?>
+        </div>      
+    </div>
+   
+</div>
+</div>
+<?= $this->form()->closeTag($form) ?>

@@ -1,0 +1,73 @@
+<?php
+$title = "Thêm Mới Khách Sạn";
+$this->headTitle($title);
+$form = $this->get('form');
+$tenks = $form->get('tenks');
+$hinhks = $form->get('hinhks');
+$diachi = $form->get('diachi');
+$btnSubmit = $form->get('btnSubmit');
+$tentp = $form->get('tentp');
+
+$form->prepare();
+?>
+ <?= $this->form()->openTag($form)?>
+<div class="form-row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3> <?= $title ?></h3>
+ 
+        <div class="form-group">
+            <?= $this->formLabel($tenks); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formText($tenks)  ;
+                echo $this->formElementErrors($tenks);
+                ?>
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <?= $this->formLabel($diachi); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formText($diachi);  
+                echo $this->formElementErrors($diachi);
+                ?>
+             </div>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($tentp); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formSelect($tentp);  
+                echo $this->formElementErrors($tentp);
+                ?>
+             </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($hinhks); ?>
+            <div class="col-md-9">
+                <?php
+                echo $this->formFile($hinhks);  
+                echo $this->formElementErrors($hinhks);
+                ?>
+             </div>
+        </div>
+
+        
+       
+
+
+    
+    <!-- /.box-body -->
+    <div class="form-row">
+        <div class="col-md-2 col-md-offset-10">
+        <?= $this->formSubmit($btnSubmit) ?>
+        </div>      
+    </div>
+   
+</div>
+</div>
+<?= $this->form()->closeTag($form) ?>
